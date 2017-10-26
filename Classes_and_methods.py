@@ -11,6 +11,12 @@ class Point:
     
   def point_print(self): # is an instance method
     print ("point : (",self.x,",",self.y,",",self.z,")")
+    
+  def __str__(self): # print operator overloading
+    return ("point : ({},{},{})".format(self.x,self.y,self.z))
+  
+  def __add__(self,point2): # add operator overloading
+    return Point(self.x+point2.x, self.y+point2.y, self.z+point2.z)
   
   @staticmethod  # accepts only the arguments that are passed, no self arguments
   def distance_between_points(point1, point2):
@@ -32,5 +38,7 @@ print (Point.distance_between_points(p1,p2))
 print (Point.get_count_of_instances_generated())
 
 three_d_distance = Point.three_d_distance(p1,p2)
+print (three_d_distance)
 
-print (three_d_distance.point_print())
+sum_of_coordinates = p1+p2
+print (sum_of_coordinates)
