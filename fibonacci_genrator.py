@@ -15,19 +15,30 @@ def factorial(n):
             a=n
             for i in range(1,a):
                 a*=i
-            yield a
+            yield ("!{} = {}".format(i+1,a))
             n-=1
 
-        #yield a
+def get_integer_input() -> int:
+    number = input("Please enter a number : ")
+    try:
+        return int(number)
+    except:
+        print("please enter a valid number. Aborting")
+        exit(1)
+
 
 # assigning
+
+range_expected = get_integer_input()
+
 a = fibonacci()
-b = factorial(5)
+b = factorial(range_expected)
 
 # a range provides for only 0 to n-1 in range(0,n)
-for i in range(5):
+print ('generating the fibonacci sequence for the specified range...')
+for i in range(range_expected):
     print (next(a))
 
-print ("factorials")
-for i in range(4):
+print ('generating the factorials for the numbers in the specified range...')
+for i in range(range_expected-1):
     print (next(b))
